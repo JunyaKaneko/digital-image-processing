@@ -19,6 +19,7 @@
 
 from PIL import Image
 import numpy as np
+from matplotlib import pyplot as plt
 
 
 def discriminant_analysis(image):
@@ -38,10 +39,19 @@ def discriminant_analysis(image):
 
 if __name__ == '__main__':
     image = np.array(Image.open('img/test.jpg').convert('L'), dtype=np.uint8)
+    bin_image = np.array(image)
     t = discriminant_analysis(image)
 
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
-            image[i, j] = 255 if image[i, j] >= t else 0
+            bin_image[i, j] = 255 if image[i, j] >= t else 0
 
-    Image.fromarray(image).save('img/outcome.jpg')
+    plt.subplot(1, 2, 1)
+    plt.title('Original')
+    plt.imshow(image, cmap='Greys_r')
+
+    plt.subplot(1, 2, 2)
+    plt.title('Binary')
+    plt.imshow(bin_image, cmap='Greys_r')
+
+    plt.savefig('img/output.png')
