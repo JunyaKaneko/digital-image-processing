@@ -2,4 +2,4 @@
 
 ### Chapter9
 
-* [binarize.py](http://bit.ly/1PygKLf)
+* [線形判別分析を用いた画像の2値化 (binarize.py)](http://bit.ly/1PygKLf)
